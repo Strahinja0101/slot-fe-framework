@@ -1,22 +1,34 @@
-import { Container } from 'pixi.js';
+import { Container, Application } from 'pixi.js';
 import { Reel } from '../reel/Reel';
+import { eventBus } from '../../../eventBus';
+
+const REEL_W   = 140;
+const GAP      = 20;
+const ROWS     = 3;
+const VIEW_H   = ROWS * REEL_W;
 
 export class Reels {
   public container = new Container();
   private reelComponents: Reel[] = [];
 
-  async init(app: PIXI.Application) {
-    const reelCount = 3;
-    for (let i = 0; i < reelCount; i++) {
-      const r = new Reel(i);
-      await r.init(app);
-      r.container.x = i * 160;
-      this.container.addChild(r.container);
-      this.reelComponents.push(r);
-    }
-    // center container
-    this.container.x = (app.renderer.width - (reelCount - 1) * 160) * 0.5;
-    this.container.y = (app.renderer.height - 300) * 0.5;
+  async init(app: Application) {
+     const reelCount = 3;
+
+  for (let i = 0; i < reelCount; i++) {
+    const r = new Reel(i);
+    await r.init(app);
+    r.container.x = i * (REEL_W + GAP);
+    this.container.addChild(r.container);
+    this.reelComponents.push(r);
+  }
+
+  // centriraj posle što znaš ukupnu širinu
+  const totalWidth = reelCount * REEL_W + (reelCount - 1) * GAP;
+  this.container.x = (app.renderer.width  - totalWidth) * 0.5;
+  this.container.y = (app.renderer.height - VIEW_H)    * 0.5;
+
+  // listener
+  eventBus.on('spin', () => this.spin());
   }
 
   spin() {

@@ -23,15 +23,15 @@ export class SlotMachine {
       this.reelsLayer.init(this.app),
       this.uiLayer.init(this.app),
     ]);
-
+    this.reelsLayer.container.mask = this.frameLayer.maskRect;
     this.container.addChild(
       this.bgLayer.container,
-      this.frameLayer.container,
       this.reelsLayer.container,
+      this.frameLayer.container,
       this.fxLayer,
       this.uiLayer.container
     );
 
-    this.app.on('spin', () => this.reelsLayer.spin());
+    
   }
 }

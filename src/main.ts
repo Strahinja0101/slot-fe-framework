@@ -5,10 +5,12 @@ import { App } from './App'
 const host = document.getElementById('app') as HTMLElement;
 
 const app = new Application({
-  resizeTo: host,
+  resizeTo: window,
   backgroundColor: 0x000000,
   antialias: true,
 });
+
+
 
 host.appendChild(app.view);
 

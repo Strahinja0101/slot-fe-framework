@@ -1,9 +1,9 @@
-import { Container, Sprite, Texture } from 'pixi.js';
+import { Container, Sprite, Texture, Application } from 'pixi.js';
 
 export class Background {
   public container = new Container();
 
-  async init(app: PIXI.Application) {
+  async init(app: Application) {
     // placeholder texture - solid color
     const tex = Texture.WHITE;
     const bg = new Sprite(tex);

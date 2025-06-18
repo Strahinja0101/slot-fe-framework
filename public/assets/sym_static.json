@@ -1,0 +1,75 @@
+{
+"frames": {
+	"ace_sym.png": {
+		"frame": {"x":522, "y":0, "w":169, "h":153},
+		"spriteSourceSize": {"x":0,"y":0,"w":169,"h":153},
+		"sourceSize": {"w":169,"h":153}
+	},
+	"bonus_sym.png": {
+		"frame": {"x":174, "y":133, "w":169, "h":153},
+		"spriteSourceSize": {"x":0,"y":0,"w":169,"h":153},
+		"sourceSize": {"w":169,"h":153}
+	},
+	"gobstopper_sym.png": {
+		"frame": {"x":174, "y":0, "w":169, "h":128},
+		"spriteSourceSize": {"x":0,"y":0,"w":169,"h":128},
+		"sourceSize": {"w":169,"h":128}
+	},
+	"hp1_sym.png": {
+		"frame": {"x":0, "y":474, "w":169, "h":153},
+		"spriteSourceSize": {"x":0,"y":0,"w":169,"h":153},
+		"sourceSize": {"w":169,"h":153}
+	},
+	"hp2_sym.png": {
+		"frame": {"x":0, "y":316, "w":169, "h":153},
+		"spriteSourceSize": {"x":0,"y":0,"w":169,"h":153},
+		"sourceSize": {"w":169,"h":153}
+	},
+	"hp3_sym.png": {
+		"frame": {"x":0, "y":158, "w":169, "h":153},
+		"spriteSourceSize": {"x":0,"y":0,"w":169,"h":153},
+		"sourceSize": {"w":169,"h":153}
+	},
+	"hp4_sym.png": {
+		"frame": {"x":0, "y":0, "w":169, "h":153},
+		"spriteSourceSize": {"x":0,"y":0,"w":169,"h":153},
+		"sourceSize": {"w":169,"h":153}
+	},
+	"hp5_sym.png": {
+		"frame": {"x":174, "y":291, "w":169, "h":153},
+		"spriteSourceSize": {"x":0,"y":0,"w":169,"h":153},
+		"sourceSize": {"w":169,"h":153}
+	},
+	"jack_sym.png": {
+		"frame": {"x":348, "y":451, "w":169, "h":153},
+		"spriteSourceSize": {"x":0,"y":0,"w":169,"h":153},
+		"sourceSize": {"w":169,"h":153}
+	},
+	"king_sym.png": {
+		"frame": {"x":348, "y":293, "w":169, "h":153},
+		"spriteSourceSize": {"x":0,"y":0,"w":169,"h":153},
+		"sourceSize": {"w":169,"h":153}
+	},
+	"queen_sym.png": {
+		"frame": {"x":348, "y":135, "w":169, "h":153},
+		"spriteSourceSize": {"x":0,"y":0,"w":169,"h":153},
+		"sourceSize": {"w":169,"h":153}
+	},
+	"sugar_bomb_sym.png": {
+		"frame": {"x":348, "y":0, "w":169, "h":130},
+		"spriteSourceSize": {"x":0,"y":0,"w":169,"h":130},
+		"sourceSize": {"w":169,"h":130}
+	},
+	"ten_sym.png": {
+		"frame": {"x":174, "y":449, "w":169, "h":153},
+		"spriteSourceSize": {"x":0,"y":0,"w":169,"h":153},
+		"sourceSize": {"w":169,"h":153}
+	}
+
+},
+"meta": {
+	"image": "sym_static.png",
+	"size": {"w": 696, "h": 632},
+	"scale": "1"
+}
+}
