@@ -1,24 +1,37 @@
-import type { Application, Container } from 'pixi.js';
-import { Container as PixiContainer, Sprite as PixiSprite, Texture } from 'pixi.js';
-import { gsap } from 'gsap';
+import type { Application, Container as PixiContainer } from 'pixi.js';
+import { Container } from 'pixi.js';
+import { Background } from './layers/Background';
+import { ReelsFrame } from './layers/ReelsFrame';
+import { Reels } from './layers/Reels';
+import { UILayer } from './layers/UILayer';
 
 export class SlotMachine {
-  public container: Container;
+  public container = new Container();
 
-  constructor(private app: Application) {
-    this.container = new PixiContainer();
-  }
+  private bgLayer = new Background();
+  private frameLayer = new ReelsFrame();
+  private reelsLayer = new Reels();
+  private fxLayer = new Container();
+  private uiLayer = new UILayer();
+
+  constructor(private app: Application) {}
 
   async init() {
-   const tex = Texture.WHITE;
-     const centerSquare = new PixiSprite(tex);
-    centerSquare.tint  = 0xffd700;      // zlatna boja (promeni po želji)
-    centerSquare.width = centerSquare.height = 120;
+    await Promise.all([
+      this.bgLayer.init(this.app),
+      this.frameLayer.init(this.app),
+      this.reelsLayer.init(this.app),
+      this.uiLayer.init(this.app),
+    ]);
 
-    // Izračunaj centar render-platna
-    const { width, height } = this.app.renderer;
-    centerSquare.x = (width  - centerSquare.width)  * 0.5;
-    centerSquare.y = (height - centerSquare.height) * 0.5;
-    this.container.addChild(centerSquare);
+    this.container.addChild(
+      this.bgLayer.container,
+      this.frameLayer.container,
+      this.reelsLayer.container,
+      this.fxLayer,
+      this.uiLayer.container
+    );
+
+    this.app.on('spin', () => this.reelsLayer.spin());
   }
 }
