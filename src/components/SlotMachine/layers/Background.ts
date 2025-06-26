@@ -1,17 +1,29 @@
-import { Container, Sprite, Texture, Application } from 'pixi.js';
+import { Container, Sprite, Texture, Application, Assets } from "pixi.js";
+import { Spine } from "pixi-spine";
 
 export class Background {
   public container = new Container();
+  spine?: Spine;
 
   async init(app: Application) {
-    // placeholder texture - solid color
-    const tex = Texture.WHITE;
-    const bg = new Sprite(tex);
-    bg.tint = 0x003366; // dark blue
+    const bacgroundSpineAsset = Assets.get("background");
+    this.spine = new Spine(bacgroundSpineAsset.spineData);
+    // ili app.screen.height ako želiš fleksibilno
 
-    bg.width = app.renderer.width;
-    bg.height = app.renderer.height;
+    this.spine.x = app.screen.width / 2; // centriraj horizontaln
+    this.spine.y = app.screen.height; // dno canvasa
+    this.container.addChild(this.spine);
+    const bounds = this.spine.getLocalBounds();
 
-    this.container.addChild(bg);
+    // skaliraj da pokrije celu širinu
+    const scaleX = app.screen.width / bounds.width;
+    const scaleY = app.screen.height / bounds.height;
+    this.spine.scale.set(scaleX, scaleY);
+    this.spine.x = -bounds.x * scaleX;
+    this.spine.y = -bounds.y * scaleY;
+
+    this.spine.state.setAnimation(0, "bg_loop", true);
+
+    this.container.addChild(this.spine);
   }
 }

@@ -11,7 +11,9 @@ export class App {
         {
           name: 'core',
           assets: {
-            symbols:   'assets/sym_static.json' // PNG + JSON atlas
+            symbols:   'assets/images/sym_static.json',// PNG + JSON atlas
+            ui:      'assets/images/all_ui_buttons_new.json', // PNG + JSON atlas
+            background: 'assets/spines/base_background_anim.json', // Spine animacija
           }
         }
       ]
@@ -29,6 +31,10 @@ export class App {
     const atlas = Assets.get('symbols');
     const textureKeys = Object.keys(atlas.textures ?? {});
     console.log('Loaded texture names:', textureKeys);
+
+    const atlas1 = Assets.get('ui');
+    const textureKey1 = Object.keys(atlas1.textures ?? {});
+    console.log('Loaded texture names:', textureKey1);
 
     const slot = new SlotMachine(this.app);
     await slot.init();
