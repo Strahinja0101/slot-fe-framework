@@ -12,6 +12,8 @@ import { SpinButton } from "../UI/specialButtons/SpinButton";
 import { AutoPlayButton } from "../UI/specialButtons/AutoPlayButton";
 import { StakeButton } from "../UI/specialButtons/StakeButton";
 import { MenuButton } from "../UI/specialButtons/MenuButton";
+// System popup controller
+import { showStakePopup } from '../../../utils/PopupSystemController';
 import { eventBus } from "../../../eventBus";
 
 export class UILayer {

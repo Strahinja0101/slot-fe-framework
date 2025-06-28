@@ -44,7 +44,7 @@ export abstract class BaseButton extends Container {
     this.on("pointerup", () => {
       if (!this.isDisabled) {
         this.sprite.texture = this.textures.hover;
-        console.log(`[BaseButton] Kliknuto dugme: ${this.constructor.name}`);
+        console.log(`[BaseButton] Button clicked: ${this.constructor.name}`);
         onClick?.();
       }
     });

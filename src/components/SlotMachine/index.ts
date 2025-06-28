@@ -5,6 +5,11 @@ import { ReelsFrame } from './layers/ReelsFrame';
 import { Reels } from './layers/Reels';
 import { UILayer } from './layers/UILayer';
 
+import { eventBus } from '../../eventBus';
+import { showStakePopup } from '../../utils/PopupSystemController';
+import { showAutoplayPopup } from '../../utils/PopupSystemController';
+import { showMenuPopup } from '../../utils/PopupSystemController';
+
 export class SlotMachine {
   public container = new Container();
 
@@ -32,6 +37,17 @@ export class SlotMachine {
       this.uiLayer.container
     );
 
-    
+    eventBus.on('stake', () => {
+    console.log('[UI] Stake button clicked');
+    showStakePopup();
+  });
+    eventBus.on('autoplay', () => {
+    console.log('[UI] Autoplay button clicked');
+    showAutoplayPopup();
+  });
+    eventBus.on('menu', () => {
+    console.log('[UI] Menu button clicked');
+    showMenuPopup();
+  });
   }
 }
