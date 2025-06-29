@@ -1,0 +1,11 @@
+{
+  "stake": 20,
+  "win": 40,
+  "resultSymbols": [
+    ["hp1_sym.png", "hp1_sym.png", "hp1_sym.png", "hp1_sym.png", "hp1_sym.png"],
+    ["hp1_sym.png", "hp1_sym.png", "hp1_sym.png", "hp1_sym.png", "hp1_sym.png"],
+    ["hp1_sym.png", "hp1_sym.png", "hp1_sym.png", "hp1_sym.png", "hp1_sym.png"],
+    ["hp1_sym.png", "hp1_sym.png", "hp1_sym.png", "hp1_sym.png", "hp1_sym.png"],
+    ["hp1_sym.png", "hp1_sym.png", "hp1_sym.png", "hp1_sym.png", "hp1_sym.png"]
+  ]
+}

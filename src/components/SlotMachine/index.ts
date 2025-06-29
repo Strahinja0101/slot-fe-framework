@@ -9,10 +9,13 @@ import { eventBus } from '../../eventBus';
 import { showStakePopup } from '../../utils/PopupSystemController';
 import { showAutoplayPopup } from '../../utils/PopupSystemController';
 import { showMenuPopup } from '../../utils/PopupSystemController';
+import { GameModel } from '../../model/GameModel';
+import { GameCommunicationService } from '../../services/GameCommunicationService';
 
 export class SlotMachine {
   public container = new Container();
 
+  private model = new GameModel();
   private bgLayer = new Background();
   private frameLayer = new ReelsFrame();
   private reelsLayer = new Reels();
@@ -36,6 +39,11 @@ export class SlotMachine {
       this.fxLayer,
       this.uiLayer.container
     );
+
+    const data = await GameCommunicationService.fetchInitialGameState();
+    this.model.updateFromServer(data);
+
+    this.reelsLayer.setResultSymbols(this.model.resultSymbols);
 
     eventBus.on('stake', () => {
     console.log('[UI] Stake button clicked');
