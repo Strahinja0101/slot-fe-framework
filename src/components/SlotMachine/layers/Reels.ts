@@ -4,7 +4,7 @@ import { eventBus } from '../../../eventBus';
 
 const REEL_W   = 140;
 const GAP      = 20;
-const ROWS     = 3;
+const ROWS     = 5;
 const VIEW_H   = ROWS * REEL_W;
 
 export class Reels {
@@ -12,7 +12,7 @@ export class Reels {
   private reelComponents: Reel[] = [];
 
   async init(app: Application) {
-     const reelCount = 3;
+     const reelCount = 5;
 
   for (let i = 0; i < reelCount; i++) {
     const r = new Reel(i);

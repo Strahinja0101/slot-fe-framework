@@ -5,7 +5,7 @@ export class ReelsFrame {
 
   public readonly maskRect = new Graphics();
 
-  async init(app: Application, w = 500, h = 300) {
+  async init(app: Application, w = 800, h = 600) {
  // 1) maska (ispunjeno, ali na alpha=1 -> svejedno je nevidljivo jer je maska)
     this.maskRect.beginFill(0x000000)
                  .drawRect(0, 0, w, h)
