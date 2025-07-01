@@ -1,6 +1,7 @@
 import { Container, Application } from "pixi.js";
 import { Reel } from "../reel/Reel";
 import { eventBus } from "../../../eventBus";
+import { gsap } from "gsap";
 
 const REEL_W = 140;
 const GAP = 20;
@@ -32,14 +33,35 @@ export class Reels {
   }
 
   spin() {
-  
-    for (let i = 0; i < this.reelComponents.length; i++) {
-      setTimeout(() => {
-        this.reelComponents[i].spin();
-          console.log("[Reels] Spinning reel: " + i);
-      }, i * 150); // delay između rilova (100ms po rilu)
-    }
+  for (let i = 0; i < this.reelComponents.length; i++) {
+    const reel = this.reelComponents[i];
+    const delay = i * 150;
+
+    const originalY = reel.container.y;
+
+    // Step 1: skoči nagore
+    gsap.to(reel.container, {
+      y: originalY - 30,
+      duration: 0.15,
+      ease: "power1.out",
+      delay: delay / 1000, // gsap delay je u sekundama
+      onComplete: () => {
+        // Step 2: vrati se nazad dole
+        gsap.to(reel.container, {
+          y: originalY,
+          duration: 0.15,
+          ease: "power1.in",
+          onComplete: () => {
+            // Step 3: sad tek kreni spin
+            reel.spin();
+            console.log("[Reels] Spinning reel: " + i);
+          }
+        });
+      }
+    });
   }
+}
+
 
   setResultSymbols(resultSymbols: string[][]) {
     this.reelComponents.forEach((reel, index) => {

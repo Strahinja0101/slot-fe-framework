@@ -40,10 +40,6 @@ export class SlotMachine {
       this.uiLayer.container
     );
 
-    const data = await GameCommunicationService.fetchInitialGameState();
-    this.model.updateFromServer(data);
-
-    this.reelsLayer.setResultSymbols(this.model.resultSymbols);
 
     eventBus.on('stake', () => {
     console.log('[UI] Stake button clicked');
